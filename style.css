@@ -1,0 +1,194 @@
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.5rem;
+  background: #414650;
+  opacity: 0.85;
+  color: #ffffff;
+  font-family: 'Ubuntu Mono', -apple-system, monospace;
+  -webkit-text-size-adjust: 100%;
+}
+button {
+  outline: 0;
+  border: none;
+  font-size: 1.5rem;
+  font-family: 'Ubuntu Mono', -apple-system, monospace;
+}
+div#container {
+  padding-bottom: 1.5rem;
+}
+div[name='line'] {
+  display: flex;
+}
+div[name='prompt'] {
+  outline: 0;
+}
+div[name='input'] {
+  outline: 0;
+  margin-left: 0.5rem;
+}
+div[placeholderactive=true]::before {
+  content: attr(placeholder);
+  opacity: 0.2;
+  animation: fadeIn 6s ease 0s normal;
+}
+div[name='output'] {
+  outline: 0;
+}
+table {
+  border-spacing: 0;
+  border-collapse: 0;
+  margin: 1.5rem 0 1.5rem 1.5rem;
+  font-size: 1.3rem;
+  animation: fadeIn 3s ease 0s normal;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+.hidden {
+  display: none;
+}
+.visible {
+  display: table-row;
+  animation: fadeIn 2s ease 0s normal;
+}
+button[name='toggle'] {
+  margin: -0.7rem 0 0 1.5rem;
+  background: #6496dd;
+  color: white;
+  border-radius: 2rem;
+  display: block;
+  animation: fadeIn 3s ease 0s normal;
+}
+button[value='-'] {
+  background: #ffdf00;
+  color: #696969;
+  border-radius: 50%;
+  padding: 0 0.7rem;
+}
+th {
+  background: #ebf5ff;
+  color: #010101;
+  text-align: left;
+  padding: 0.5rem 2.0rem;
+}
+th:first-child {
+  border-top-left-radius: 0.5rem;
+}
+th:last-child {
+  border-top-right-radius: 0.5rem;
+}
+tr td {
+  background: #ffffff;
+  color: #010101;
+  padding: 0.5rem 2.0rem;
+}
+tr:nth-child(even) td {
+  background: #f2f2f2;
+}
+tr:last-child td:first-child {
+  border-bottom-left-radius: 0.5rem;
+}
+tr:last-child td:last-child {
+  border-bottom-right-radius: 0.5rem;
+}
+tr:hover td {
+  background: #fafaeb;
+  transition: all 0.2s ease-in-out;
+}
+table[name='form'] {
+  margin: 0.5rem 0 0.5rem 0.5rem;
+  font-size: 1.3rem;
+}
+table[name='form'] tr {
+  height: 2.5rem;
+}
+table[name='form'] tr td {
+  outline: 0;
+}
+.fadeIn {
+  animation: fadeIn 2s ease 0s normal;
+}
+div[name='shortcuts-panel'] {
+  margin-top: 4rem;
+}
+div[name='statement-panel'] {
+  display: flex;
+  flex-wrap: wrap;
+  clear: both;
+  margin: 0.5rem 0;
+  animation: fadeIn 3s ease 0s normal;
+}
+div[name='parameter-panel'] {
+  display: flex;
+  flex-wrap: wrap;
+  clear: both;
+  margin: 0.5rem 0;
+  animation: fadeIn 3s ease 0s normal;
+}
+div[name='label'] {
+  padding: 0.5rem 0.7rem;
+}
+button[name='level0'] {
+  background: #3bc46b;
+  color: white;
+  border-radius: 2rem;
+  padding: 0.5rem 0.7rem;
+  margin: 0.5rem 0 0.5rem 0.5rem;
+}
+button[name='level1'] {
+  background: #0083ba;
+  color: white;
+  border-radius: 2rem;
+  padding: 0.5rem 0.7rem;
+  margin-left: 0.5rem;
+}
+button[name='level2'] {
+  background: #0083ba;
+  color: white;
+  border-radius: 2rem;
+  padding: 0.5rem 0.7rem;
+  margin-left: 0.5rem;
+}
+button[name='level3'] {
+  background: #0083ba;
+  color: white;
+  border-radius: 2rem;
+  padding: 0.5rem 0.7rem;
+  margin-left: 0.5rem;
+}
+button[name='execute'] {
+  background: #6496dd;
+  color: white;
+  border-radius: 2rem;
+  padding: 0.5rem 0.7rem;
+  margin-left: 0.5rem;
+}
+button[name='next'] {
+  background: #6496dd;
+  color: white;
+  border-radius: 2rem;
+  padding: 0.5rem 0.7rem;
+  margin-left: 0.5rem;
+}
+div[name='parameter-panel'] button[name='+'] {
+  background: #3bc46b;
+  color: #696969;
+  border-radius: 50%;
+  padding: 0 0.7rem;
+  max-height: 2rem;
+}
+div[name='parameter-panel'] button[name='-'] {
+  background: #ffdf00;
+  color: #696969;
+  border-radius: 50%;
+  padding: -0 0.7rem;
+  margin-left: 0.7rem;
+  max-height: 2rem;
+}
+.unselected {
+  opacity: 0.5;
+}

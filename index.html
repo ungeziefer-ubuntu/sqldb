@@ -1,0 +1,53 @@
+<html>
+<head>
+  <meta name='viewport' content='width=device-width,
+  minimum-scale=1,user-scalable=no'></meta>
+  <link rel='stylesheet' type='text/css' href='style.css'></link>
+  <script src='src/parser/tokenizer/delimiter/delimiter.js'></script>
+  <script src='src/parser/tokenizer/delimiter/quotedelimiter.js'></script>
+  <script src='src/parser/tokenizer/delimiter/multidelimiter.js'></script>
+  <script src='src/parser/tokenizer/tokenizer/tokenizer.js'></script>
+  <script src='src/parser/tokenizer/tokenizer/tokenbuffer.js'></script>
+  <script src='src/parser/parser/parser-generator.js'></script>
+  <script src='src/parser/parser/reservedwords.js'></script>
+  <script src='src/parser/parser/sqlparser.js'></script>
+  <script src='src/database/database.js'></script>
+  <script src='src/driver/sqldbdriver.js'></script>
+  <script src='src/driver/querycompiler/querycompiler.js'></script>
+  <script src='src/driver/querycompiler/fieldlist.js'></script>
+  <script src='src/main/sqldb.js'></script>
+  <script src='src/interface/browser/term.js'></script>
+  <script src='src/interface/browser/fileloader.js'></script>
+  <script src='src/interface/browser/sqlterm.js'></script>
+  <script src='src/interface/browser/richformat.js'></script>
+  <script src='src/interface/browser/richui.js'></script>
+  <script src='src/parser/parser/csvparser.js'></script>
+  <script src='demo/demo.js'></script>
+  <script>
+  window.onload = async () => {
+    try {
+      const term       = Term('container'),
+            fileloader = FileLoader(),
+            csvparser  = CSVParser(),
+            richformat = RichFormat();
+            db = SQLDB(Delimiter, QuoteDelimiter, MultiDelimiter, Tokenizer,
+              TokenBuffer, Parser, ReservedWords, SQLParser, Database,
+              SQLDBDriver, QueryCompiler, FieldList);
+      sqlterm = SQLTerm(term, fileloader, csvparser, richformat, RichUI, db);
+
+      await demo(term, richformat, db);
+
+      sqlterm.run();
+    }
+    catch(e) {
+      const container = document.getElementById('container');
+      container.textContent = 'Your browser is not supported';
+      console.error(e);
+    }
+  };
+  </script>
+</head>
+<body>
+  <div id='container'></div>
+</body>
+</html>
