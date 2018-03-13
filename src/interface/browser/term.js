@@ -17,6 +17,15 @@ const Term = (() => {
     });
   };
 
+  const setCursor = async (e) => {
+    const range = document.createRange();
+    range.selectNodeContents(e);
+    range.collapse(false);
+    const selection = document.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+  };
+
   const activatePlaceholder = (e) => {
     const {target} = e;
     if(target.textContent === '') {
@@ -33,7 +42,7 @@ const Term = (() => {
       [this.container, this.fn, this.history, this.idx, this.isClosed,
         this.paused] = [document.getElementById(id), {}, [], -1, false, false];
 
-      document.addEventListener('keypress', (e) => {
+      document.addEventListener('keypress', async (e) => {
         const {container, fn, history, idx, isClosed, paused, input} = this;
         if(isClosed || paused || document.activeElement !== input) return;
         if(e.keyCode === ENTER) {
@@ -53,8 +62,10 @@ const Term = (() => {
         }
         else if(e.keyCode === UP) {
           if(history.length === 0 || idx === 0) return;
-          this.input.textContent
+          input.textContent
             = this.history[this.idx = idx === -1 ? history.length-1 : idx-1];
+          await sleep(50);
+          await setCursor(input);
         }
         else if(e.keyCode === DOWN) {
           if(history.length === 0 || idx === -1) return;

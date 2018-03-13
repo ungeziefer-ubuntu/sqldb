@@ -26,28 +26,36 @@ const demo = async (term, richformat, db) => {
   db.loadJSON(pop, {table:{name:'population'}});
   db.loadJSON(gdp, {table:{name:'gdp'}});
 
-  const ENTER = 13;
+  const fn = {}
+  const removeEventListener = () => {
+    document.removeEventListener('keypress',   fn.keypress);
+    document.removeEventListener('click',      fn.click);
+    document.removeEventListener('touchstart', fn.touchstart);
+  };
   let skip = false;
+  const ENTER = 13;
   document.addEventListener('keypress', (() => {
-    const fn = (e) => {
-      if(e.keyCode === ENTER) skip = true;
-      document.removeEventListener('keypress', fn);
+    const f = fn.keypress = (e) => {
+      if(e.keyCode === ENTER) {
+        skip = true;
+        removeEventListener()
+      }
     };
-    return fn;
+    return f;
   })());
   document.addEventListener('click', (() => {
-    const fn = (e) => {
+    const f = fn.click = (e) => {
       skip = true;
-      document.removeEventListener('click', fn);
+      removeEventListener()
     };
-    return fn;
+    return f;
   })());
   document.addEventListener('touchstart', (() => {
-    const fn = (e) => {
+    const f = fn.touchstart = (e) => {
       skip = true;
-      document.removeEventListener('touchstart', fn);
+      removeEventListener()
     };
-    return fn;
+    return f;
   })());
 
   let res;
